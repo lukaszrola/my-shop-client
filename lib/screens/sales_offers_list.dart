@@ -29,6 +29,7 @@ class SalesOffersList extends StatelessWidget {
 
   static const findSaleOffersKey = "findSaleOffers";
   static const subscribeSaleOffersKey = "subscribeNewOffers";
+  static const idKey = "id";
   static const nameKey = "name";
   static const imageUrlKey = "imageUrl";
   static const deliveryInDaysKey = "deliveryInDays";
@@ -53,25 +54,20 @@ class SalesOffersList extends StatelessWidget {
           }
 
           if (result.isLoading) {
-            return const Text('Loading');
+            return const Center(child: CircularProgressIndicator());
           }
 
-          return ResultAccumulator.appendUniqueEntries(
-              latest: result.data,
-              builder: (context, {dynamic results}) {
-                return ListView.builder(itemBuilder: (ctx, index) {
-                  final offer = results[index][subscribeSaleOffersKey];
-                  return SaleOfferItem(
-                      key: Key(offer["id"]),
-                      imageUrl: offer[imageUrlKey],
-                      name: offer[nameKey],
-                      deliveryInDays: offer[deliveryInDaysKey],
-                      price: offer[priceInDollarsKey]);
-                },
-                  itemCount: results.length,
-
-                );
-              });
+          return ListView.builder(itemBuilder: (ctx, idx) {
+            final offer = result.data![subscribeSaleOffersKey][idx];
+            return SaleOfferItem(
+                key: Key(offer[idKey]),
+                imageUrl: offer[imageUrlKey],
+                name: offer[nameKey],
+                deliveryInDays: offer[deliveryInDaysKey],
+                price: offer[priceInDollarsKey]);
+          },
+            itemCount: result.data![subscribeSaleOffersKey].length,
+          );
         });
   }
 }
