@@ -16,6 +16,9 @@ class SaleOfferDetailsScreen extends StatelessWidget {
           deliveryInDays,
           priceInDollars,
           imageUrl
+          seller{
+            name
+          }
         }
       }
       """;
@@ -60,7 +63,7 @@ class SaleOfferDetailsScreen extends StatelessWidget {
                 child: OfferDescriptionWidget(
                   productName: offer[GraphQLKeys.nameKey],
                   deliveryInDays: offer[GraphQLKeys.deliveryInDaysKey],
-                  sellerName: "John Smith",
+                  sellerName: offer[GraphQLKeys.sellerKey][GraphQLKeys.sellerNameKey],
                   specification: {
                     "Processor:": "Intel Core i7-11700K",
                     "Memory": "16 GB",

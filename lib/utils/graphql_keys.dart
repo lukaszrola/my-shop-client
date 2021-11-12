@@ -6,4 +6,6 @@ class GraphQLKeys {
   static const imageUrlKey = "imageUrl";
   static const deliveryInDaysKey = "deliveryInDays";
   static const priceInDollarsKey = "priceInDollars";
+  static const sellerKey = "seller";
+  static const sellerNameKey = "name";
 }
