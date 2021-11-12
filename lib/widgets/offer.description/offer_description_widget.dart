@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import 'offer_additional_info_widget.dart';
@@ -31,13 +32,10 @@ class OfferDescriptionWidget extends StatelessWidget {
                 productName: productName,
                 deliveryInDays: deliveryInDays,
                 sellerName: sellerName),
-            const SizedBox(
-              height: 5,
-            ),
+
+            Divider(height: 30,),
             OfferSpecificationWidget(specificationItems: specification),
-            const SizedBox(
-              height: 5,
-            ),
+            Divider(height: 30),
             OfferAdditionalInfoWidget(additionalInfo),
           ],
         ),

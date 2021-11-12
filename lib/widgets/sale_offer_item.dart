@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:my_shop/screens/sale_offer_details_screen.dart';
 
 class SaleOfferItem extends StatelessWidget {
+  final String id;
   final String imageUrl;
   final String name;
   final int deliveryInDays;
@@ -10,6 +11,7 @@ class SaleOfferItem extends StatelessWidget {
 
   const SaleOfferItem(
       {Key? key,
+      required this.id,
       required this.imageUrl,
       required this.name,
       required this.deliveryInDays,
@@ -21,7 +23,9 @@ class SaleOfferItem extends StatelessWidget {
     return Card(
       color: Colors.deepOrange.shade100,
       child: ListTile(
-        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const SaleOfferDetailsScreen(),fullscreenDialog: true)),
+        onTap: () => Navigator.of(context).push(MaterialPageRoute(
+            builder: (_) => SaleOfferDetailsScreen(id),
+            fullscreenDialog: true)),
         leading: CircleAvatar(
           backgroundImage: NetworkImage(imageUrl),
         ),
@@ -29,7 +33,7 @@ class SaleOfferItem extends StatelessWidget {
         subtitle: Text("Delivery in $deliveryInDays days"),
         trailing: Text(
           "$price\$",
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: const TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
     );

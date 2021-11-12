@@ -1,20 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:my_shop/utils/graphql_keys.dart';
 import 'package:my_shop/widgets/sale_offer_item.dart';
 
 class SalesOffersList extends StatelessWidget {
-  static const findSaleOffers = """
-      query findSaleOffers{
-        findSaleOffers {
-          name,
-          deliveryInDays,
-          priceInDollars,
-          imageUrl
-        }
-      }
-      """;
-
   static const subscribeNewOffers = """
       subscription {
         subscribeNewOffers {
@@ -26,14 +16,6 @@ class SalesOffersList extends StatelessWidget {
         }
       }
       """;
-
-  static const findSaleOffersKey = "findSaleOffers";
-  static const subscribeSaleOffersKey = "subscribeNewOffers";
-  static const idKey = "id";
-  static const nameKey = "name";
-  static const imageUrlKey = "imageUrl";
-  static const deliveryInDaysKey = "deliveryInDays";
-  static const priceInDollarsKey = "priceInDollars";
 
   const SalesOffersList({Key? key}) : super(key: key);
 
@@ -58,15 +40,16 @@ class SalesOffersList extends StatelessWidget {
           }
 
           return ListView.builder(itemBuilder: (ctx, idx) {
-            final offer = result.data![subscribeSaleOffersKey][idx];
+            final offer = result.data![GraphQLKeys.subscribeSaleOffersKey][idx];
             return SaleOfferItem(
-                key: Key(offer[idKey]),
-                imageUrl: offer[imageUrlKey],
-                name: offer[nameKey],
-                deliveryInDays: offer[deliveryInDaysKey],
-                price: offer[priceInDollarsKey]);
+                key: Key(offer[GraphQLKeys.idKey]),
+                id: offer[GraphQLKeys.idKey],
+                imageUrl: offer[GraphQLKeys.imageUrlKey],
+                name: offer[GraphQLKeys.nameKey],
+                deliveryInDays: offer[GraphQLKeys.deliveryInDaysKey],
+                price: offer[GraphQLKeys.priceInDollarsKey]);
           },
-            itemCount: result.data![subscribeSaleOffersKey].length,
+            itemCount: result.data![GraphQLKeys.subscribeSaleOffersKey].length,
           );
         });
   }
