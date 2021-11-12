@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import 'description_item.dart';
-import 'section_title.dart';
+import '../description_item.dart';
+import '../section_title.dart';
 
 class OfferSpecificationWidget extends StatelessWidget {
   final Map<String, String> specificationItems;
