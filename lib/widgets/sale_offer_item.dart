@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:my_shop/screens/sale_offer_details_screen.dart';
 
 class SaleOfferItem extends StatelessWidget {
   final String imageUrl;
@@ -20,6 +21,7 @@ class SaleOfferItem extends StatelessWidget {
     return Card(
       color: Colors.deepOrange.shade100,
       child: ListTile(
+        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const SaleOfferDetailsScreen(),fullscreenDialog: true)),
         leading: CircleAvatar(
           backgroundImage: NetworkImage(imageUrl),
         ),
