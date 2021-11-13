@@ -50,14 +50,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        body: Container(
-          alignment: Alignment.center,
-          color: Colors.deepOrange.shade50,
-          child: const SalesOffersList(),
-        ));
+    return const SalesOffersList();
   }
 }
