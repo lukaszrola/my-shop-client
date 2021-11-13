@@ -9,14 +9,21 @@ class GraphQLUtil {
   static const sellerKey = "seller";
   static const sellerNameKey = "name";
   static const findOfferByIdKey = "findOfferById";
+  static const specificationKey = "specification";
+  static const componentNameKey = "name";
+  static const componentConfigurationKey = "configuration";
 
   static const findOfferByIdQuery = """
       query $findOfferByIdKey(\$id: ID!){
         $findOfferByIdKey(id: \$id) {
-          $nameKey,
-          $deliveryInDaysKey,
-          $priceInDollarsKey,
+          $nameKey
+          $deliveryInDaysKey
+          $priceInDollarsKey
           $imageUrlKey
+          $specificationKey{
+            $componentNameKey
+            $componentConfigurationKey
+          }
           $sellerKey{
             $sellerNameKey
           }
