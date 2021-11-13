@@ -1,4 +1,4 @@
-class GraphQLKeys {
+class GraphQLUtil {
   static const findSaleOffersKey = "findSaleOffers";
   static const subscribeSaleOffersKey = "subscribeNewOffers";
   static const idKey = "id";
@@ -8,4 +8,31 @@ class GraphQLKeys {
   static const priceInDollarsKey = "priceInDollars";
   static const sellerKey = "seller";
   static const sellerNameKey = "name";
+  static const findOfferByIdKey = "findOfferById";
+
+  static const findOfferByIdQuery = """
+      query $findOfferByIdKey(\$id: ID!){
+        $findOfferByIdKey(id: \$id) {
+          $nameKey,
+          $deliveryInDaysKey,
+          $priceInDollarsKey,
+          $imageUrlKey
+          $sellerKey{
+            $sellerNameKey
+          }
+        }
+      }
+      """;
+
+  static const offersSubscription = """
+      subscription {
+        $subscribeSaleOffersKey {
+          $idKey,
+          $nameKey,
+          $deliveryInDaysKey,
+          $priceInDollarsKey,
+          $imageUrlKey
+        }
+      }
+      """;
 }

@@ -5,17 +5,6 @@ import 'package:my_shop/utils/graphql_keys.dart';
 import 'package:my_shop/widgets/sale_offer_item.dart';
 
 class SalesOffersList extends StatelessWidget {
-  static const subscribeNewOffers = """
-      subscription {
-        subscribeNewOffers {
-          id,
-          name,
-          deliveryInDays,
-          priceInDollars,
-          imageUrl
-        }
-      }
-      """;
 
   const SalesOffersList({Key? key}) : super(key: key);
 
@@ -23,7 +12,7 @@ class SalesOffersList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Subscription(
         options: SubscriptionOptions(
-          document: gql(subscribeNewOffers),
+          document: gql(GraphQLUtil.offersSubscription),
           fetchPolicy: FetchPolicy.cacheAndNetwork
         ),
         builder: (
@@ -40,16 +29,16 @@ class SalesOffersList extends StatelessWidget {
           }
 
           return ListView.builder(itemBuilder: (ctx, idx) {
-            final offer = result.data![GraphQLKeys.subscribeSaleOffersKey][idx];
+            final offer = result.data![GraphQLUtil.subscribeSaleOffersKey][idx];
             return SaleOfferItem(
-                key: Key(offer[GraphQLKeys.idKey]),
-                id: offer[GraphQLKeys.idKey],
-                imageUrl: offer[GraphQLKeys.imageUrlKey],
-                name: offer[GraphQLKeys.nameKey],
-                deliveryInDays: offer[GraphQLKeys.deliveryInDaysKey],
-                price: offer[GraphQLKeys.priceInDollarsKey]);
+                key: Key(offer[GraphQLUtil.idKey]),
+                id: offer[GraphQLUtil.idKey],
+                imageUrl: offer[GraphQLUtil.imageUrlKey],
+                name: offer[GraphQLUtil.nameKey],
+                deliveryInDays: offer[GraphQLUtil.deliveryInDaysKey],
+                price: offer[GraphQLUtil.priceInDollarsKey]);
           },
-            itemCount: result.data![GraphQLKeys.subscribeSaleOffersKey].length,
+            itemCount: result.data![GraphQLUtil.subscribeSaleOffersKey].length,
           );
         });
   }
