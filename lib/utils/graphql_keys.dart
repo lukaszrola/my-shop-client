@@ -13,6 +13,7 @@ class GraphQLUtil {
   static const componentNameKey = "name";
   static const componentConfigurationKey = "configuration";
   static const additionalInfoKey = "additionalInfo";
+  static const removeOfferKey = "removeSaleOffer";
 
   static const findOfferByIdQuery = """
       query $findOfferByIdKey(\$id: ID!){
@@ -44,4 +45,12 @@ class GraphQLUtil {
         }
       }
       """;
+
+  static const removeOfferMutation = """
+      mutation $removeOfferKey(\$id: ID!) {
+        $removeOfferKey(id:\$id) {
+          $idKey
+        }
+      }
+  """;
 }

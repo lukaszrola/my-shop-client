@@ -35,7 +35,9 @@ class SaleOfferDetailsScreen extends StatelessWidget {
           appBar: AppBar(
             title: const Text("Offer details"),
           ),
-          bottomNavigationBar: BuyButton(offer[GraphQLUtil.priceInDollarsKey]),
+          bottomNavigationBar: BuyButton(
+              offerId: offerId,
+              priceInDollars: offer[GraphQLUtil.priceInDollarsKey]),
           body: Flex(
             direction: Axis.vertical,
             children: [
@@ -48,17 +50,16 @@ class SaleOfferDetailsScreen extends StatelessWidget {
               Flexible(
                 flex: 3,
                 child: OfferDescriptionWidget(
-                  productName: offer[GraphQLUtil.nameKey],
-                  deliveryInDays: offer[GraphQLUtil.deliveryInDaysKey],
-                  sellerName: offer[GraphQLUtil.sellerKey]
-                      [GraphQLUtil.sellerNameKey],
-                  specification: {
-                    for (final e in offer[GraphQLUtil.specificationKey])
-                      e[GraphQLUtil.componentNameKey]:
-                          e[GraphQLUtil.componentConfigurationKey]
-                  },
-                  additionalInfo:offer[GraphQLUtil.additionalInfoKey]
-                ),
+                    productName: offer[GraphQLUtil.nameKey],
+                    deliveryInDays: offer[GraphQLUtil.deliveryInDaysKey],
+                    sellerName: offer[GraphQLUtil.sellerKey]
+                        [GraphQLUtil.sellerNameKey],
+                    specification: {
+                      for (final e in offer[GraphQLUtil.specificationKey])
+                        e[GraphQLUtil.componentNameKey]:
+                            e[GraphQLUtil.componentConfigurationKey]
+                    },
+                    additionalInfo: offer[GraphQLUtil.additionalInfoKey]),
               ),
             ],
           ),
