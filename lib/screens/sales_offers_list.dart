@@ -13,7 +13,6 @@ class SalesOffersList extends StatelessWidget {
     return Subscription(
         options: SubscriptionOptions(
           document: gql(GraphQLUtil.offersSubscription),
-          fetchPolicy: FetchPolicy.cacheAndNetwork
         ),
         builder: (
           QueryResult result, {
