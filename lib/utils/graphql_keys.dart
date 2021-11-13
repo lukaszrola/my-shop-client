@@ -12,6 +12,7 @@ class GraphQLUtil {
   static const specificationKey = "specification";
   static const componentNameKey = "name";
   static const componentConfigurationKey = "configuration";
+  static const additionalInfoKey = "additionalInfo";
 
   static const findOfferByIdQuery = """
       query $findOfferByIdKey(\$id: ID!){
@@ -27,6 +28,7 @@ class GraphQLUtil {
           $sellerKey{
             $sellerNameKey
           }
+          $additionalInfoKey
         }
       }
       """;

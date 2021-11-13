@@ -57,8 +57,7 @@ class SaleOfferDetailsScreen extends StatelessWidget {
                       e[GraphQLUtil.componentNameKey]:
                           e[GraphQLUtil.componentConfigurationKey]
                   },
-                  additionalInfo:
-                      "Incredibly light and boasting a speedy performance, get your work done anywhere with the MacBook Air (2020).",
+                  additionalInfo:offer[GraphQLUtil.additionalInfoKey]
                 ),
               ),
             ],
