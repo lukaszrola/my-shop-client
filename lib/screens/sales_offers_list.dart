@@ -31,7 +31,7 @@ class SalesOffersList extends StatelessWidget {
             }
 
             final offersCount =
-                result.data![GraphQLUtil.subscribeSaleOffersKey].length;
+                result.data![GraphQLUtil.subscribeOffersKey].length;
 
             return Column(
               children: [
@@ -46,7 +46,7 @@ class SalesOffersList extends StatelessWidget {
                   child: ListView.builder(
                     itemBuilder: (ctx, idx) {
                       final offer =
-                          result.data![GraphQLUtil.subscribeSaleOffersKey][idx];
+                          result.data![GraphQLUtil.subscribeOffersKey][idx];
                       return SaleOfferItem(
                           key: Key(offer[GraphQLUtil.idKey]),
                           id: offer[GraphQLUtil.idKey],

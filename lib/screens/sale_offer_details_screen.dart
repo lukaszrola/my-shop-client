@@ -29,7 +29,7 @@ class SaleOfferDetailsScreen extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         }
 
-        final offer = result.data![GraphQLUtil.findOfferByIdKey];
+        final offer = result.data![GraphQLUtil.offerKey];
 
         return Scaffold(
           appBar: AppBar(

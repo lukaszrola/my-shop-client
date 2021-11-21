@@ -1,6 +1,7 @@
 class GraphQLUtil {
-  static const findSaleOffersKey = "findSaleOffers";
-  static const subscribeSaleOffersKey = "subscribeNewOffers";
+  static const offerKey = "offer";
+  static const offersKey = "offers";
+  static const subscribeOffersKey = "offers";
   static const idKey = "id";
   static const nameKey = "name";
   static const imageUrlKey = "imageUrl";
@@ -8,16 +9,15 @@ class GraphQLUtil {
   static const priceInDollarsKey = "priceInDollars";
   static const sellerKey = "seller";
   static const sellerNameKey = "name";
-  static const findOfferByIdKey = "findOfferById";
   static const specificationKey = "specification";
   static const componentNameKey = "name";
   static const componentConfigurationKey = "configuration";
   static const additionalInfoKey = "additionalInfo";
-  static const removeOfferKey = "removeSaleOffer";
+  static const removeOfferKey = "removeOffer";
 
   static const findOfferByIdQuery = """
-      query $findOfferByIdKey(\$id: ID!){
-        $findOfferByIdKey(id: \$id) {
+      query $offerKey(\$id: ID!){
+        $offerKey(id: \$id) {
           $nameKey
           $deliveryInDaysKey
           $priceInDollarsKey
@@ -36,7 +36,7 @@ class GraphQLUtil {
 
   static const offersSubscription = """
       subscription {
-        $subscribeSaleOffersKey {
+        $subscribeOffersKey {
           $idKey,
           $nameKey,
           $deliveryInDaysKey,
