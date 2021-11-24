@@ -29,7 +29,7 @@ class SaleOfferDetailsScreen extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         }
 
-        final offer = result.data![GraphQLUtil.offerKey];
+        final offer = result.data![GraphQLUtil.offer];
 
         return Scaffold(
           appBar: AppBar(
@@ -37,29 +37,29 @@ class SaleOfferDetailsScreen extends StatelessWidget {
           ),
           bottomNavigationBar: BuyButton(
               offerId: offerId,
-              priceInDollars: offer[GraphQLUtil.priceInDollarsKey]),
+              priceInDollars: offer[GraphQLUtil.priceInDollars]),
           body: Flex(
             direction: Axis.vertical,
             children: [
               Flexible(
                 flex: 2,
                 child: ProductImageWidget(
-                  offer[GraphQLUtil.imageUrlKey],
+                  offer[GraphQLUtil.imageUrl],
                 ),
               ),
               Flexible(
                 flex: 3,
                 child: OfferDescriptionWidget(
-                    productName: offer[GraphQLUtil.nameKey],
-                    deliveryInDays: offer[GraphQLUtil.deliveryInDaysKey],
-                    sellerName: offer[GraphQLUtil.sellerKey]
-                        [GraphQLUtil.sellerNameKey],
+                    productName: offer[GraphQLUtil.name],
+                    deliveryInDays: offer[GraphQLUtil.deliveryInDays],
+                    sellerName: offer[GraphQLUtil.seller]
+                        [GraphQLUtil.sellerName],
                     specification: {
-                      for (final e in offer[GraphQLUtil.specificationKey])
-                        e[GraphQLUtil.componentNameKey]:
-                            e[GraphQLUtil.componentConfigurationKey]
+                      for (final e in offer[GraphQLUtil.specification])
+                        e[GraphQLUtil.componentName]:
+                            e[GraphQLUtil.componentConfiguration]
                     },
-                    additionalInfo: offer[GraphQLUtil.additionalInfoKey]),
+                    additionalInfo: offer[GraphQLUtil.additionalInfo]),
               ),
             ],
           ),

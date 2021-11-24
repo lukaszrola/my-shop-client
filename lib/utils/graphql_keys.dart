@@ -1,55 +1,55 @@
 class GraphQLUtil {
-  static const offerKey = "offer";
-  static const offersKey = "offers";
-  static const subscribeOffersKey = "offers";
-  static const idKey = "id";
-  static const nameKey = "name";
-  static const imageUrlKey = "imageUrl";
-  static const deliveryInDaysKey = "deliveryInDays";
-  static const priceInDollarsKey = "priceInDollars";
-  static const sellerKey = "seller";
-  static const sellerNameKey = "name";
-  static const specificationKey = "specification";
-  static const componentNameKey = "name";
-  static const componentConfigurationKey = "configuration";
-  static const additionalInfoKey = "additionalInfo";
-  static const removeOfferKey = "removeOffer";
+  static const offer = "offer";
+  static const offers = "offers";
+  static const subscribeOffers = "offers";
+  static const id = "id";
+  static const name = "name";
+  static const imageUrl = "imageUrl";
+  static const deliveryInDays = "deliveryInDays";
+  static const priceInDollars = "priceInDollars";
+  static const seller = "seller";
+  static const sellerName = "name";
+  static const specification = "specification";
+  static const componentName = "name";
+  static const componentConfiguration = "configuration";
+  static const additionalInfo = "additionalInfo";
+  static const removeOffer = "removeOffer";
 
   static const findOfferByIdQuery = """
-      query $offerKey(\$id: ID!){
-        $offerKey(id: \$id) {
-          $nameKey
-          $deliveryInDaysKey
-          $priceInDollarsKey
-          $imageUrlKey
-          $specificationKey{
-            $componentNameKey
-            $componentConfigurationKey
+      query $offer(\$id: ID!){
+        $offer(id: \$id) {
+          $name
+          $deliveryInDays
+          $priceInDollars
+          $imageUrl
+          $specification{
+            $componentName
+            $componentConfiguration
           }
-          $sellerKey{
-            $sellerNameKey
+          $seller{
+            $sellerName
           }
-          $additionalInfoKey
+          $additionalInfo
         }
       }
       """;
 
   static const offersSubscription = """
       subscription {
-        $subscribeOffersKey {
-          $idKey,
-          $nameKey,
-          $deliveryInDaysKey,
-          $priceInDollarsKey,
-          $imageUrlKey
+        $subscribeOffers {
+          $id,
+          $name,
+          $deliveryInDays,
+          $priceInDollars,
+          $imageUrl
         }
       }
       """;
 
   static const removeOfferMutation = """
-      mutation $removeOfferKey(\$id: ID!) {
-        $removeOfferKey(id:\$id) {
-          $idKey
+      mutation $removeOffer(\$id: ID!) {
+        $removeOffer(id:\$id) {
+          $id
         }
       }
   """;

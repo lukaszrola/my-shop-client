@@ -31,7 +31,7 @@ class SalesOffersList extends StatelessWidget {
             }
 
             final offersCount =
-                result.data![GraphQLUtil.subscribeOffersKey].length;
+                result.data![GraphQLUtil.subscribeOffers].length;
 
             return Column(
               children: [
@@ -46,14 +46,14 @@ class SalesOffersList extends StatelessWidget {
                   child: ListView.builder(
                     itemBuilder: (ctx, idx) {
                       final offer =
-                          result.data![GraphQLUtil.subscribeOffersKey][idx];
+                          result.data![GraphQLUtil.subscribeOffers][idx];
                       return SaleOfferItem(
-                          key: Key(offer[GraphQLUtil.idKey]),
-                          id: offer[GraphQLUtil.idKey],
-                          imageUrl: offer[GraphQLUtil.imageUrlKey],
-                          name: offer[GraphQLUtil.nameKey],
-                          deliveryInDays: offer[GraphQLUtil.deliveryInDaysKey],
-                          price: offer[GraphQLUtil.priceInDollarsKey]);
+                          key: Key(offer[GraphQLUtil.id]),
+                          id: offer[GraphQLUtil.id],
+                          imageUrl: offer[GraphQLUtil.imageUrl],
+                          name: offer[GraphQLUtil.name],
+                          deliveryInDays: offer[GraphQLUtil.deliveryInDays],
+                          price: offer[GraphQLUtil.priceInDollars]);
                     },
                     itemCount: offersCount,
                   ),
